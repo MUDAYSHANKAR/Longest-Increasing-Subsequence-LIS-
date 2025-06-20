@@ -1,0 +1,55 @@
+import bisect
+
+class Solution:
+    def lengthOfLIS(self, nums: list[int]) -> int:
+
+        if not nums:
+            return 0
+
+        tails = []
+        
+        for num in nums:
+   
+            i = bisect.bisect_left(tails, num)
+            
+            if i == len(tails):
+
+                tails.append(num)
+            else:
+
+                tails[i] = num
+                
+        return len(tails)
+
+if __name__ == "__main__":
+    solver = Solution()
+
+    nums1 = [10, 9, 2, 5, 3, 7, 101, 18]
+    print(f"Input: {nums1}")
+    print(f"LIS Length: {solver.lengthOfLIS(nums1)}") 
+    print("-" * 20)
+
+    nums2 = [0, 1, 0, 3, 2, 3]
+    print(f"Input: {nums2}")
+    print(f"LIS Length: {solver.lengthOfLIS(nums2)}")
+    print("-" * 20)
+
+    nums3 = [7, 7, 7, 7, 7, 7, 7]
+    print(f"Input: {nums3}")
+    print(f"LIS Length: {solver.lengthOfLIS(nums3)}") 
+    print("-" * 20)
+
+    nums4 = [1, 2, 3, 4, 5]
+    print(f"Input: {nums4}")
+    print(f"LIS Length: {solver.lengthOfLIS(nums4)}") 
+    print("-" * 20)
+    
+    nums5 = [5, 4, 3, 2, 1]
+    print(f"Input: {nums5}")
+    print(f"LIS Length: {solver.lengthOfLIS(nums5)}")
+    print("-" * 20)
+ 
+    nums6 = []
+    print(f"Input: {nums6}")
+    print(f"LIS Length: {solver.lengthOfLIS(nums6)}") 
+    print("-" * 20)
